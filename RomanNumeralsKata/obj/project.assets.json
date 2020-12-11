@@ -3524,6 +3524,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://moonpig.myget.org/F/moonpig-nuget/auth/deed5c9f-2998-48f8-9dbf-3a5ba5012443/api/v3/index.json": {},
+        "http://nuget.moonpig.com/nuget/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

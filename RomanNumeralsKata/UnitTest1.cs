@@ -1,5 +1,6 @@
 using System.Globalization;
-using System.Text;
+using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 using Xunit;
 
 namespace RomanNumeralsKata
@@ -27,7 +28,19 @@ namespace RomanNumeralsKata
         [InlineData(30, "XXX")]
         [InlineData(34, "XXXIV")]
         [InlineData(39, "XXXIX")]
-       
+        [InlineData(40, "XL")]
+        [InlineData(41, "XLI")]
+        [InlineData(49, "XLIX")]
+        [InlineData(50, "L")]
+        [InlineData(51, "LI")]
+        [InlineData(54, "LIV")]
+        [InlineData(59, "LIX")]
+        [InlineData(60, "LX")]
+        [InlineData(70, "LXX")]
+        [InlineData(88, "LXXXVIII")]
+        [InlineData(90, "XC")]
+        [InlineData(100, "C")]
+        [InlineData(200, "CC")]
 
         public void acceptsNumber_ReturnsRomanNumeral(int number, string romanNumeral)
         {
@@ -37,77 +50,5 @@ namespace RomanNumeralsKata
 
             Assert.Equal(romanNumeral, result);
         }
-    }
-
-    public class RomanNumeralsConverter
-    {
-        public string ToRomanNumerals(int number)
-        {
-            var romanNumeral = new StringBuilder();
-
-
-            if ( number >= 10 )
-            {
-                romanNumeral.Append("X");
-                number -= 10;
-            }
-
-            if (number >= 10)
-            {
-                var returnValue = ToRomanNumerals(number);
-                romanNumeral.Append(returnValue);
-            }
-            else
-            {
-                var unit = ToRomanNumeralLessThan10(number);
-                 romanNumeral.Append(unit);
-            }
-                
-            return romanNumeral.ToString();     
-        }
-
-
-        public string ToRomanNumeralLessThan10(int number)
-        {
-           
-            var romanNumeral = new StringBuilder();
-            
-
-            if (number < 4)
-            {
-                for (int j = 0; j < number; j++)
-                {
-                    romanNumeral.Append("I");
-                }
-            }
-
-            if (number == 4)
-            {
-                romanNumeral.Append("IV");
-            }
-
-            if (number == 5)
-            {
-                romanNumeral.Append("V");
-            }
-
-            if (number > 5 && number < 9)
-            {
-                romanNumeral.Append("V");
-                for (int K = 5; K < number; K++)
-                {
-                    romanNumeral.Append("I");
-                }
-            }
-
-            else if (number == 9)
-            {
-                romanNumeral.Append("IX");
-            }
-            return romanNumeral.ToString();
-        }
-
-    
-        
     }
 }
